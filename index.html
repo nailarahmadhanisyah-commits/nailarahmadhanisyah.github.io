@@ -1,69 +1,730 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <title>Beranda</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Website Naila ★ Funky Zone</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           FUNKY WEST x Y2K THEME
+        ========================= */
+
+        :root {
+            --pink: #ff36a2;
+            --blue: #45d7ff;
+            --yellow: #faff4d;
+            --purple: #a98bff;
+            --black: #171522;
+            --white: #fffdf5;
+            --gray: #e8e5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 35px 16px;
+            color: var(--black);
+            font-family: "Space Grotesk", Arial, sans-serif;
+            background-color: #b5a4ff;
+            background-image:
+                radial-gradient(circle, #171522 1.5px, transparent 1.5px);
+            background-size: 19px 19px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* MAIN WEBSITE */
+
+        .site-wrapper {
+            max-width: 1050px;
+            margin: auto;
+            overflow: hidden;
+            background: var(--white);
+            border: 4px solid var(--black);
+            border-radius: 20px;
+            box-shadow: 10px 10px 0 var(--black);
+        }
+
+        /* TOP TICKER */
+
+        .ticker {
+            padding: 9px 12px;
+            overflow: hidden;
+            color: var(--black);
+            background: var(--yellow);
+            border-bottom: 4px solid var(--black);
+            font-family: "Archivo Black", sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* HEADER */
+
+        .header {
+            position: relative;
+            padding: 42px 20px 35px;
+            overflow: hidden;
+            text-align: center;
+            color: var(--white);
+            background: var(--pink);
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.28) 2px, transparent 2px);
+            background-size: 22px 22px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .header::before {
+            content: "★";
+            position: absolute;
+            top: 12px;
+            left: 6%;
+            color: var(--yellow);
+            font-size: 60px;
+            transform: rotate(-18deg);
+            text-shadow: 4px 4px 0 var(--black);
+        }
+
+        .header::after {
+            content: "✦";
+            position: absolute;
+            right: 7%;
+            bottom: 4px;
+            color: var(--blue);
+            font-size: 85px;
+            transform: rotate(15deg);
+            text-shadow: 4px 4px 0 var(--black);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 13px;
+            color: var(--black);
+            background: var(--yellow);
+            border: 3px solid var(--black);
+            border-radius: 5px;
+            box-shadow: 4px 4px 0 var(--black);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transform: rotate(-2deg);
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 1;
+            margin: 17px 0 5px;
+            font-family: "Archivo Black", Impact, sans-serif;
+            font-size: clamp(38px, 7vw, 70px);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            -webkit-text-stroke: 1px var(--black);
+            text-shadow:
+                4px 4px 0 var(--black),
+                8px 8px 0 var(--blue);
+        }
+
+        .header p {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin: 15px 0 0;
+            padding: 8px 14px;
+            color: var(--black);
+            background: var(--white);
+            border: 3px solid var(--black);
+            border-radius: 8px;
+            box-shadow: 4px 4px 0 var(--black);
+            font-size: 13px;
+            font-weight: 700;
+            transform: rotate(1deg);
+        }
+
+        /* NAVIGATION */
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 17px;
+            background: var(--blue);
+            border-bottom: 4px solid var(--black);
+        }
+
+        .navbar a {
+            display: inline-block;
+            padding: 10px 16px;
+            background: var(--white);
+            border: 3px solid var(--black);
+            border-radius: 7px;
+            box-shadow: 4px 4px 0 var(--black);
+            font-size: 12px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--white);
+            background: var(--pink);
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0 var(--black);
+        }
+
+        /* DECORATIVE BANNER */
+
+        .mini-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 20px;
+            background: var(--black);
+            color: var(--yellow);
+            font-family: "Archivo Black", sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .mini-banner span:nth-child(2) {
+            color: var(--pink);
+        }
+
+        /* CONTENT LAYOUT */
+
+        .content {
+            display: grid;
+            grid-template-columns: minmax(0, 2.3fr) minmax(210px, 1fr);
+            gap: 24px;
+            padding: 28px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+            padding-bottom: 13px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-family: "Archivo Black", sans-serif;
+            font-size: 25px;
+            text-transform: uppercase;
+        }
+
+        .section-heading span {
+            padding: 5px 9px;
+            color: var(--black);
+            background: var(--yellow);
+            border: 2px solid var(--black);
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* NEWS CARDS */
+
+        .news-card {
+            position: relative;
+            margin-bottom: 27px;
+            padding: 22px;
+            background: var(--white);
+            border: 3px solid var(--black);
+            border-radius: 13px;
+            box-shadow: 6px 6px 0 var(--black);
+            transition: .2s ease;
+        }
+
+        .news-card:hover {
+            transform: translate(-3px, -3px) rotate(-.3deg);
+            box-shadow: 10px 10px 0 var(--black);
+        }
+
+        .news-card:nth-of-type(even) {
+            background: #fff0f8;
+        }
+
+        .sticker {
+            position: absolute;
+            top: -15px;
+            right: 14px;
+            padding: 6px 11px;
+            color: var(--black);
+            background: var(--yellow);
+            border: 3px solid var(--black);
+            border-radius: 5px;
+            box-shadow: 3px 3px 0 var(--black);
+            font-family: "Archivo Black", sans-serif;
+            font-size: 10px;
+            transform: rotate(4deg);
+        }
+
+        .category {
+            display: inline-block;
+            padding: 5px 9px;
+            color: var(--white);
+            background: var(--black);
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .news-card h3 {
+            margin: 15px 0 8px;
+            font-family: "Archivo Black", sans-serif;
+            font-size: 20px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .date {
+            margin: 0 0 15px;
+            color: #70657a;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #383440;
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 14px;
+            color: var(--black);
+            background: var(--blue);
+            border: 3px solid var(--black);
+            border-radius: 6px;
+            box-shadow: 4px 4px 0 var(--black);
+            font-size: 12px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        .read-more:hover {
+            color: var(--white);
+            background: var(--pink);
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0 var(--black);
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            align-self: start;
+        }
+
+        .side-box {
+            margin-bottom: 23px;
+            padding: 18px;
+            background: var(--yellow);
+            border: 3px solid var(--black);
+            border-radius: 12px;
+            box-shadow: 6px 6px 0 var(--black);
+        }
+
+        .side-box:nth-child(2) {
+            background: var(--purple);
+        }
+
+        .side-box h3 {
+            margin: 0 0 13px;
+            font-family: "Archivo Black", sans-serif;
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+
+        .side-box p {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .side-links {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .side-links li {
+            margin: 9px 0;
+        }
+
+        .side-links a {
+            display: block;
+            padding: 9px 10px;
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .side-links a:hover {
+            color: var(--white);
+            background: var(--pink);
+            transform: translateX(4px);
+        }
+
+        .sticker-box {
+            padding: 18px 12px;
+            color: var(--white);
+            background: var(--pink);
+            border: 3px solid var(--black);
+            border-radius: 12px;
+            box-shadow: 6px 6px 0 var(--black);
+            text-align: center;
+        }
+
+        .sticker-box .star {
+            font-size: 35px;
+            color: var(--yellow);
+            text-shadow: 3px 3px 0 var(--black);
+        }
+
+        .sticker-box h3 {
+            margin: 6px 0;
+            font-family: "Archivo Black", sans-serif;
+            font-size: 18px;
+            text-shadow: 2px 2px 0 var(--black);
+        }
+
+        .sticker-box p {
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 23px 15px;
+            color: var(--white);
+            background: var(--black);
+            border-top: 5px solid var(--pink);
+            text-align: center;
+        }
+
+        .footer .footer-title {
+            margin: 0 0 8px;
+            color: var(--blue);
+            font-family: "Archivo Black", sans-serif;
+            font-size: 17px;
+            letter-spacing: 2px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 11px;
+        }
+
+        .footer .heart {
+            color: var(--pink);
+        }
+
+        .footer .copyright {
+            color: #c8c1d0;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 720px) {
+            body {
+                padding: 16px 10px;
+            }
+
+            .site-wrapper {
+                box-shadow: 6px 6px 0 var(--black);
+            }
+
+            .header {
+                padding: 35px 12px;
+            }
+
+            .header::before {
+                left: 3%;
+                font-size: 40px;
+            }
+
+            .header::after {
+                right: 3%;
+                font-size: 55px;
+            }
+
+            .header h1 {
+                letter-spacing: -1px;
+            }
+
+            .navbar {
+                gap: 9px;
+                padding: 13px 8px;
+            }
+
+            .navbar a {
+                padding: 9px 11px;
+                font-size: 11px;
+            }
+
+            .mini-banner {
+                justify-content: center;
+                flex-wrap: wrap;
+                text-align: center;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 20px 15px;
+            }
+
+            .section-heading h2 {
+                font-size: 21px;
+            }
+
+            .news-card {
+                padding: 19px 15px;
+            }
+
+            .news-card h3 {
+                font-size: 18px;
+            }
+
+            .sidebar {
+                margin-top: 5px;
+            }
+        }
+    </style>
 </head>
 
-<body bgcolor="darkgrey" background="images/background.svg">
-    <!-- Halaman web tanpa CSS. Murni hanya memakai HTML -->
-    <p>&nbsp;</p>
-    <table border="1" width="800px" cellpadding="12px" align="center" bgcolor="white">
-        <tr>
-            <td colspan="2" align="center" bgcolor="ffacb6" background="images/jaring-teal.svg">
-                <font color="white">
-                    <p>&nbsp;</p>
-                    <h1>Website Naila</h1>
-                    <p><em>Hip Hop di sini,  Woojin di hati.</em></p>
-                    <p>&nbsp;</p>
-                </font>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center" bgcolor="66d2ff">
-                <a href="beranda.html">Beranda</a> |
-                <a href="Tentang%20saya.html">Tentang Saya</a> |
-                <a href="kegiatan.html">Kegiatan</a> |
-                <a href="kontak.html">Kontak</a>
-            </td>
-        </tr>
-        <tr>
-            <td width="75%" bgcolor="">
-                <!-- Content utama -->
+<body>
 
-                <h3>LNGSHOT (Lngshot) cheers on examinees! EBS CSAT audio learning grand finale</h3>
-                <p align="right"><small><em>September 18, 2026</em></small></p>
-                <p>Lngshot has joined as the final participant in the EBS audio learning content "Idols Share CSAT Korean History," reading 10 past exam questions on Korean history and delivering explanations and encouraging messages.
+    <div class="site-wrapper">
 
-This content features K-pop artists reading Korean history questions that appeared in the recent five years' College Scholastic Ability Test, mock exams, or achievement tests, providing customized explanations and motivational messages. Longshot explains key points necessary for solving the problems.</p>
-                <p><a href="berita1.html">Selanjutnya</a></p>
+        <!-- TOP TICKER -->
+        <div class="ticker">
+            ★ WELCOME TO NAILA'S WORLD ★ GOOD VIBES ONLY ★
+        </div>
 
-                <hr>
+        <!-- HEADER -->
+        <header class="header">
+            <span class="eyebrow">✦ EST. 2026 · INTERNET BABY ✦</span>
 
-                <h3>LNGSHOT Looks Casual on the Cover of DAZED Korea's October Issue</h3>
-                <p align="right"><small><em>September 18, 2026</em></small></p>
-                <p>With a relaxed and effortless concept, this photoshoot showcases a more relaxed side of LNGSHOT. With a warm sauna atmosphere, the LNGSHOT members appear to be enjoying themselves without overdoing it, while still maintaining their unique character and style..</p>
-                <p><a href="berita2.html">Selanjutnya</a></p>
+            <h1>WEBSITE<br>NAILA!</h1>
 
-                <!-- Akhir dari content utama -->
-            </td>
-            <td width="25%" valign="top" bgcolor="f1b8d9">
-                <p>Tautan eksternal</p>
-                <ol>
-                    <li><a href="https://www.mawan.or.id">Website Mawan</a></li>
-                    <li><a href="https://www.github.com">Github</a></li>
-                    <li><a href="https://www.wikipedia.org">Wikipedia</a></li>
-                    <li><a href="https://www.w3schools.com">W3Schools</a></li>
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="right" bgcolor="feee74">
-                <font color="white"><small>&copy; Copyright Moses Sigma, 2026.</small></font>
-            </td>
-        </tr>
-    </table>
-    <p>&nbsp;</p>
+            <p>HIP HOP DI SINI, WOOJIN DI HATI ♡</p>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav class="navbar">
+            <a href="beranda.html" class="active">★ BERANDA</a>
+            <a href="Tentang%20saya.html">♡ TENTANG SAYA</a>
+            <a href="kegiatan.html">✦ KEGIATAN</a>
+            <a href="kontak.html">☎ KONTAK</a>
+        </nav>
+
+        <!-- DECORATIVE BANNER -->
+        <div class="mini-banner">
+            <span>★ FUNKY ZONE ★</span>
+            <span>Y2K FOREVER!</span>
+            <span>♡ HIP-HOP DIARIES ♡</span>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+
+            <section class="main-content">
+
+                <div class="section-heading">
+                    <h2>Hot News!</h2>
+                    <span>ISSUE #001</span>
+                </div>
+
+                <!-- NEWS 1 -->
+                <article class="news-card">
+                    <span class="sticker">🔥 HOT!</span>
+
+                    <span class="category">MUSIC ★ EDUCATION</span>
+
+                    <h3>
+                        LNGSHOT Cheers on Examinees!
+                        EBS CSAT Audio Learning Grand Finale
+                    </h3>
+
+                    <p class="date">
+                        ★ September 18, 2026
+                    </p>
+
+                    <p class="description">
+                        Lngshot has joined as the final participant in
+                        the EBS audio learning content "Idols Share CSAT
+                        Korean History," reading 10 past exam questions
+                        on Korean history and delivering explanations
+                        and encouraging messages.
+                        <br><br>
+                        This content features K-pop artists reading
+                        Korean history questions that appeared in recent
+                        College Scholastic Ability Tests, mock exams,
+                        and achievement tests. Lngshot explains the key
+                        points needed to solve the problems while
+                        sharing motivational messages with examinees.
+                    </p>
+
+                    <a href="berita1.html" class="read-more">
+                        READ MORE ↗
+                    </a>
+                </article>
+
+                <!-- NEWS 2 -->
+                <article class="news-card">
+                    <span class="sticker">✦ FRESH DROP</span>
+
+                    <span class="category">FASHION ★ K-POP</span>
+
+                    <h3>
+                        LNGSHOT Looks Casual on the Cover of
+                        DAZED Korea's October Issue
+                    </h3>
+
+                    <p class="date">
+                        ★ September 18, 2026
+                    </p>
+
+                    <p class="description">
+                        With a relaxed and effortless concept, this
+                        photoshoot showcases a more laid-back side of
+                        LNGSHOT. Set in a warm sauna atmosphere, the
+                        members appear to be enjoying themselves
+                        naturally while maintaining their unique
+                        character and personal style.
+                    </p>
+
+                    <a href="berita2.html" class="read-more">
+                        READ MORE ↗
+                    </a>
+                </article>
+
+            </section>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+
+                <div class="side-box">
+                    <h3>★ Link Zone</h3>
+
+                    <p>
+                        Your internet playground.
+                        Check these cool spots!
+                    </p>
+
+                    <ul class="side-links">
+                        <li>
+                            <a href="https://www.mawan.or.id"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                ↗ Website Mawan
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://github.com"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                ↗ GitHub
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.wikipedia.org"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                ↗ Wikipedia
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.w3schools.com"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                ↗ W3Schools
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="side-box">
+                    <h3>♡ The Vibe</h3>
+
+                    <p>
+                        Big dreams, loud music, baggy jeans,
+                        shiny accessories & main character energy.
+                    </p>
+
+                    <p>
+                        <strong>Current mood:</strong><br>
+                        Y2K girl forever! ★
+                    </p>
+                </div>
+
+                <div class="sticker-box">
+                    <div class="star">✦ ★ ✦</div>
+
+                    <h3>STAY FUNKY!</h3>
+
+                    <p>
+                        TOO GLAM TO GIVE A DAMN ♡
+                    </p>
+                </div>
+
+            </aside>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p class="footer-title">
+                NAILA'S FUNKY WORLD ★
+            </p>
+
+            <p>
+                Made with <span class="heart">♥</span>
+                and a little bit of attitude.
+            </p>
+
+            <p class="copyright">
+                &copy; Copyright Moses Sigma, 2026.
+                All rights reserved.
+            </p>
+        </footer>
+
+    </div>
+
 </body>
-
 </html>
